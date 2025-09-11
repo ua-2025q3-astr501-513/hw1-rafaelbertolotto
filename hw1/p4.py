@@ -64,7 +64,7 @@ class CoupledOscillators:
         self.V          = V
         
         # TODO: Compute initial modal amplitudes M0 (normal mode decomposition)
-        self.M0         = np.linalg.inv(np.matrix(self.V))*np.matrix(X0).T
+        self.M0         = np.linalg.solve(self.V, X0)
         
 
     def __call__(self, t):
@@ -78,9 +78,9 @@ class CoupledOscillators:
 
         """
         # TODO: Reconstruct the displacements from normal modes
-        self.Mt = np.array(self.M0).ravel()*np.cos(self.omega*t)
-        self.Xt = np.array(np.matrix(self.V)*np.matrix(self.Mt).T).ravel()
-        return np.sqrt(np.sum(self.Xt**2))
+        self.Mt = self.M0*np.cos(self.omega*t)
+        self.Xt = self.V@self.Mt
+        return self.Xt
 
 
 if __name__ == "__main__":

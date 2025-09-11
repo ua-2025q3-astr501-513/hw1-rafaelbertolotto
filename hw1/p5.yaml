@@ -38,11 +38,16 @@
 
 # TODO: Edit this sample idea.
 
-- topic: Numerical Linear Algebra
-  idea:  Develop a fast matrix multiplication algorithm to reduce
-         energy consumption during deep learning inference.
+- topic: ODE Integrators.
+  idea: build an N-body simulation for a toy model of a small (few tens of stars) stellar cluster.
 
 # TODO: Add two more project ideas below, following the same format as
 # the example above.
 # Remember to ensure that each idea is distinct and concise, and each
 # "topic" must be one of the listed course topics.
+
+- topic: Numerical Integration of Functions, interpolation.
+  idea: generate a synthetic stellar population from an IMF, compute its measurable quantities (such as luminosity function, mass to light ratio, etc.) and compare for different IMFs (chabrier, salpeter, Krouppa, etc.).
+
+- topic: Data Representation and Errors, Numerical Linear Algebra.
+  idea: use Gaia DR3 data to compute the velocity dispersion tensor for stars of the solar neighborhood and study the principal axes of motion.
