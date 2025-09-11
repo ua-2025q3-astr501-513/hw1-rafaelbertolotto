@@ -1,3 +1,4 @@
+HEAD
 # ASTR 513 Homework Set #1
 
 Welcome to the repository for **Homework Set #1** in ASTR 513.
@@ -61,8 +62,8 @@ and maximize your score.
 ### Part 4: Solve the Coupled Simple Harmonic Oscillator Problem (1 point)
 
 * Objective:
-  Implement an eigenvalue solver to decompose coupled simple harmonic
-  sscillators into eigenmodes, and solve it semi-analytically.
+  Take the coupled harmonic oscillator problem we solved in class
+  and rewrite it using a well-structured Python class.
 * Details:
   The description of the problem and the solution template can be
   found in `hw1/p4.py`.
@@ -124,4 +125,4 @@ to ensure your latest work are seen.
   Be mindful of the submission deadline, as late submissions will not
   be accepted.
 
-Good luck!
+Good luck!!!
