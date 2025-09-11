@@ -46,9 +46,26 @@ class CoupledOscillators:
 
         """
         # TODO: Construct the stiffness matrix K
+        K = np.zeros((len(X0), len(X0)))
+        for i in range(len(X0)):
+            K[i, i] = 2*k          
+            if i > 0:
+                K[i, i-1] = -k    
+            if i < len(X0)-1:
+                K[i, i+1] = -k    
+        
+        self.K          = K
+        
         # TODO: Solve the eigenvalue problem for K to find normal modes
+        eigvalues, V    = np.linalg.eig(self.K)
+        
         # TODO: Store angular frequencies and eigenvectors
+        self.omega      = np.sqrt(eigvalues/m)
+        self.V          = V
+        
         # TODO: Compute initial modal amplitudes M0 (normal mode decomposition)
+        self.M0         = np.linalg.inv(np.matrix(self.V))*np.matrix(X0).T
+        
 
     def __call__(self, t):
         """Calculate the displacements of the oscillators at time t.
@@ -61,16 +78,22 @@ class CoupledOscillators:
 
         """
         # TODO: Reconstruct the displacements from normal modes
+        self.Mt = np.array(self.M0).ravel()*np.cos(self.omega*t)
+        self.Xt = np.array(np.matrix(self.V)*np.matrix(self.Mt).T).ravel()
+        return np.sqrt(np.sum(self.Xt**2))
 
 
 if __name__ == "__main__":
 
     # Initialize the coupled oscillator system with default parameters
     co = CoupledOscillators()
-
     # Print displacements of the oscillators at each time step
     print("Time(s)  Displacements")
     print("----------------------")
     for t in np.linspace(0, 10, num=101):
         X = co(t)             # compute displacements at time t
         print(f"{t:.2f}", X)  # print values for reference
+        
+        
+        
+        

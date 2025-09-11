@@ -88,6 +88,20 @@ def multibit_negative(A):
 
     """
     # TODO: implement the function here
+    
+    # We start by swapping all the 0 and 1
+    newA                = []
+    for a in A[0:len(A)]:
+        newA           += [NOT(a)]
+
+    # We add 1 to the inverted binary number
+    sumCondition        = 1
+    for i in range(len(newA)):
+        newNumber       = XOR(newA[i], sumCondition) # if the previous number change from 1 to 0 we add 1
+        sumCondition    = AND(newA[i], sumCondition) # we update the sum condition for the next number
+        newA[i]         = newNumber
+    return newA
+    
 
 # We are now ready to implement subtraction using multibit_adder() and
 # multibit_negative().
@@ -110,3 +124,12 @@ def multibit_subtractor(A, B):
 
     """
     # TODO: implement the function here
+    return multibit_adder(A, multibit_negative(B))
+    
+    
+    
+    
+    
+    
+    
+    

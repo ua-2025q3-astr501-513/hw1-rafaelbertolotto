@@ -31,6 +31,8 @@
 # to overcome catastrophic cancellation.
 # Please make sure that you take care of all the special cases.
 
+import numpy as np
+
 def quadratic(a, b, c):
     """Numerically stable quadratic equation solver
 
@@ -65,3 +67,23 @@ def quadratic(a, b, c):
                 If there is no real root, x1 == x2 == None.
     """
     # TODO: implement the stable quadratic equation solver here
+    if b != 0:
+        x1 = (-b-np.sign(b)*np.sqrt(b**2-4*a*c))/(2*a)
+    else:
+        x1 = np.sqrt(-4*a*c)/(2*a)
+        
+    x2 = (c/a)/x1
+    return x1,x2
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
